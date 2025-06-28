@@ -19,7 +19,7 @@ Given('I navigate to webdriveruniversity homepge', async () => {
 });
 When('i click on the contact us button', async () => {
      //await page.pause()
-     const contactUc_Button = await page.getByRole('link', { name: 'CONTACT US Contact Us Form' });
-     await contactUc_Button.click();
+     const contactUs_Button = await page.getByRole('link', { name: 'CONTACT US Contact Us Form' });
+     await contactUs_Button.click();
 
 });
