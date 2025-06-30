@@ -1,26 +1,30 @@
 import { Given, When } from '@cucumber/cucumber';
-import { chromium, Browser, Page } from 'playwright';
+import { pageFixture } from './hooks/browserContectFixture';
 
-let browser: Browser;
-let context: any;
-let page: Page
 const url = "https://webdriveruniversity.com/"
 
 
 Given('I navigate to webdriveruniversity homepge', async () => {
-   //setup browser instance
-   browser = await chromium.launch({ headless: false });
-   context = await browser.newContext({ viewport: {width: 1920 , height: 1080}});
-   page = await context.newPage();
+    
+     //Access url
+     await pageFixture.page.goto(url);
 
-   //Access url
-   await page.goto(url);
-  
 });
 
 When('i click on the contact us button', async () => {
      //await page.pause()
-     const contactUs_Button = await page.getByRole('link', { name: 'CONTACT US Contact Us Form' });
+     const contactUs_Button = await pageFixture..getByRole('link', { name: 'CONTACT US Contact Us Form' });
      await contactUs_Button.click();
 
 });
+
+
+When('i switch to the new browser tab', async () => {
+
+     await pageFixture.context.waitForEvent('page');
+     //retrieve all pages in the context
+     const allPages = await pageFixture.context.pages();
+     //Assign the most recent page to the pageFixture
+     pageFixture.page = allPages[allPages.length - 1];
+});
+

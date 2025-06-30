@@ -3,6 +3,7 @@ Feature: https://webdriveruniversity.com - contact us page
     Scenario: Valid contact us form submission
         Given I navigate to webdriveruniversity homepge
         When i click on the contact us button
+        And i switch to the new browser tab
         And i type a first name
         And i type a last name
         And i type email address
