@@ -7,6 +7,7 @@ Feature: Login validation for webdriver page
         And i switch to the new browser tab
         And i type a username <username>
         And I type a password <passwod>
+        And I wait for 2 seconds
         And I click on Login button
         Then I should be presented with an alert box which contains text '<expectedAlertText>'
 
