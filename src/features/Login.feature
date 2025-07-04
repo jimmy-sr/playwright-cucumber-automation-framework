@@ -1,3 +1,5 @@
+@regression @login
+
 Feature: Login validation for webdriver page
 
 
@@ -15,3 +17,8 @@ Feature: Login validation for webdriver page
             | username  | passwod      | expectedAlertText    |
             | webdriver | webdriver123 | validation succeeded |
             | webdriver | webdriver    | validation failed    |
+
+        @smoke
+        Examples:
+            | username  | passwod      | expectedAlertText    |
+            | webdriver | webdriver123 | validation succeeded |
