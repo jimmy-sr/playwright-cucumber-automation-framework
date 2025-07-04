@@ -117,7 +117,7 @@ Then('i should be presented with header text {string}', async (message: string) 
      //     expect(foundElementText).toContain(message);
 
      await pageFixture.page.waitForSelector('text=${message}', { timeout: 5000 });
-     const elementByText = await pageFixture.page.getByText(message);
+     const elementByText = pageFixture.page.getByText(message);
      const text = await elementByText.textContent();
      expect(text).toContain(message);
 
