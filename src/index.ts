@@ -6,6 +6,7 @@ const common = `./src/features/*.feature \
 --require-module ts-node/register \
 --require ./src/step-definitions/**/**/*.ts \
 --require ./src/Utils/cucumber-timeout.ts \
+-f json:./repirts/report.json \
 --tags "not @ignore"` ;
 
 //define an interface for the peofile object
