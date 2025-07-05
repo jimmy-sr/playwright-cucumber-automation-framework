@@ -1,15 +1,17 @@
-import { Given, When } from '@cucumber/cucumber'
-import logger from '../logger/logger'
-import { pageFixture } from './hooks/browserContextFixture'
+import { Given, When } from '@cucumber/cucumber';
+import logger from '../logger/logger';
+import { pageFixture } from './hooks/browserContextFixture';
+import { CucumberWorld } from './world/cucumberWorld';
 
 const url = 'https://webdriveruniversity.com/'
 
-Given('I navigate to webdriveruniversity homepge', async () => {
+Given('I navigate to webdriveruniversity homepge', async function (this: CucumberWorld)  {
   try {
     //Access url
     await pageFixture.page.goto(url)
     logger.info('Accessing URL: ' + url)
-    throw new Error('simulating new error');
+    this.setUrl(url);
+    // throw new Error('simulating new error');
     
   } catch (error: any) {
      logger.error('Error occured : ' + error.message);
@@ -19,7 +21,7 @@ Given('I navigate to webdriveruniversity homepge', async () => {
 When('i click on the contact us button', async () => {
   //await page.pause()
   const contactUs_Button = await pageFixture.page.getByRole('link', {
-    name: 'CONTACT US Contact Us Form555',
+    name: 'CONTACT US Contact Us Form',
   })
   await contactUs_Button.click({timeout: 2000})
 })
