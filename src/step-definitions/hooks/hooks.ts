@@ -1,5 +1,6 @@
 import { After, AfterAll, Before, BeforeAll, Status } from "@cucumber/cucumber";
 import { Browser, BrowserType, chromium, firefox, webkit } from "@playwright/test";
+import { PageManager } from "../../page-objects/base/PageManager";
 import { setGlobalSettings } from "../../Utils/playwright-timeouts";
 import { pageFixture } from "./browserContextFixture";
 
@@ -66,6 +67,9 @@ Before(async function () {
         browserInstance = await initializeBrowserContext(config.browser);
         console.log(`Browser context initialized for: ${config.browser}`);
         await initializePage();
+
+        this.pageManager = new PageManager();
+        this.basePage = this.pageManager.createBasePage();
     } catch (error) {
         console.error("Browser context initialization failed:", error);
     }
