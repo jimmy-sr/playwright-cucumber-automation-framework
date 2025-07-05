@@ -1,4 +1,4 @@
-@regression @contact @ignore
+@regression @contact
 Feature: https://webdriveruniversity.com - contact us page
 
     Background: Pre conditions
@@ -41,7 +41,7 @@ Feature: https://webdriveruniversity.com - contact us page
         And i click on submit button
         Then I should see a success message
 
-
+    @smoke
     Scenario Outline: Validate Contact Us page
         And i type a firstname <firstName> and lastName <lastName>
         And i type a emailAddress '<emailAddress>' and a comment '<comment>'
@@ -49,7 +49,7 @@ Feature: https://webdriveruniversity.com - contact us page
         Then i should be presented with header text '<message>'
 
         Examples:
-            | firstName | lastName | emailAddress      | comment                | message                      |
-            | John      | Jones    | j@jones@email.com | Hello how are you?     | Thank you for your Message!  |
-            | Mia       | Carter   | mia@gmail.com     | Test 123               | Thank you for your Message!  |
-            | Grace     | Hudson   | gracemail.com     | Do you create websites | Error: Invalid email address |
+            | firstName | lastName | emailAddress    | comment                | message                      |
+            | John      | Jones    | jones@email.com | Hello how are you?     | Thank You for your Message!  |
+            | Mia       | Carter   | mia@gmail.com   | Test 123               | Thank You for your Message!  |
+            | Grace     | Hudson   | gracemail.com   | Do you create websites | Error: Invalid email address |

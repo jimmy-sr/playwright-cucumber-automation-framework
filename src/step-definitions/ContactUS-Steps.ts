@@ -1,5 +1,5 @@
 import { Given, When, Then } from '@cucumber/cucumber';
-import { pageFixture } from './hooks/browserContectFixture';
+import { pageFixture } from './hooks/browserContextFixture';
 import { expect } from '@playwright/test';
 import { faker } from '@faker-js/faker';
 
@@ -116,7 +116,7 @@ Then('i should be presented with header text {string}', async (message: string) 
      //     //perform validation
      //     expect(foundElementText).toContain(message);
 
-     await pageFixture.page.waitForSelector('text=${message}', { timeout: 5000 });
+     await pageFixture.page.waitForSelector(`text=${message}`, { timeout: 5000 });
      const elementByText = pageFixture.page.getByText(message);
      const text = await elementByText.textContent();
      expect(text).toContain(message);

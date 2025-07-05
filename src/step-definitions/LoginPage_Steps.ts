@@ -1,5 +1,5 @@
 import { Given, Then, When } from '@cucumber/cucumber';
-import { pageFixture } from './hooks/browserContectFixture';
+import { pageFixture } from './hooks/browserContextFixture';
 import { expect } from '@playwright/test';
 
 let alertText: string;

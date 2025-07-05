@@ -1,5 +1,5 @@
 import { Given, When } from "@cucumber/cucumber";
-import { pageFixture } from './hooks/browserContectFixture';
+import { pageFixture } from './hooks/browserContextFixture';
 
 // all the common steps should be in the base step
 Given("I wait for {int} seconds", async (seconds: number) => {

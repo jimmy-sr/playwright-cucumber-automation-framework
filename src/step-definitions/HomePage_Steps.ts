@@ -1,5 +1,5 @@
 import { Given, When } from '@cucumber/cucumber';
-import { pageFixture } from './hooks/browserContectFixture';
+import { pageFixture } from './hooks/browserContextFixture';
 
 const url = "https://webdriveruniversity.com/"
 
