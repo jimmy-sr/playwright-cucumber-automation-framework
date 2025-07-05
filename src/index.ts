@@ -4,6 +4,8 @@ import { exec } from "child_process";
 import dotenv from 'dotenv';
 dotenv.config({ path: './env/.env' })
 
+
+const parallelValue = process.env.PARALLEL || '1';
 const retryValue = process.env.RETRY || '0';
 
 
@@ -15,6 +17,7 @@ const common = `./src/features/*.feature \
 --require ./src/Utils/cucumber-timeout.ts \
 -f json:./reports/report.json \
 --format html:./reports/report.html \
+--parallel ${parallelValue} \
 --retry ${retryValue} \
 --tags "not @ignore"` ;
 
