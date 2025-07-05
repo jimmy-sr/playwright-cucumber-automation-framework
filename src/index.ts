@@ -1,5 +1,12 @@
 import { exec } from "child_process";
 
+
+import dotenv from 'dotenv';
+dotenv.config({ path: './env/.env' })
+
+const retryValue = process.env.RETRY || '0';
+
+
 //define a common command string for running cucumber tests
 
 const common = `./src/features/*.feature \
@@ -8,6 +15,7 @@ const common = `./src/features/*.feature \
 --require ./src/Utils/cucumber-timeout.ts \
 -f json:./reports/report.json \
 --format html:./reports/report.html \
+--retry ${retryValue} \
 --tags "not @ignore"` ;
 
 //define an interface for the peofile object
