@@ -1,9 +1,10 @@
-import { After, AfterAll, Before, BeforeAll, context, Status } from "@cucumber/cucumber";
-import { Browser, chromium, BrowserType, firefox, webkit } from "@playwright/test"
-import { pageFixture } from "./browserContextFixture"
+import { After, AfterAll, Before, BeforeAll, Status } from "@cucumber/cucumber";
+import { Browser, BrowserType, chromium, firefox, webkit } from "@playwright/test";
+import { setGlobalSettings } from "../../Utils/playwright-timeouts";
+import { pageFixture } from "./browserContextFixture";
 
 //load env variables from .env file
-import { config as loadEnv } from "dotenv"
+import { config as loadEnv } from "dotenv";
 const env = loadEnv({ path: './env/.env' });
 
 //Create a configuration object for easy access to env variables
@@ -45,6 +46,7 @@ async function initializePage(): Promise<void> {
     });
 
     pageFixture.page = await pageFixture.context.newPage();
+    setGlobalSettings(pageFixture.page);
     await pageFixture.page.setViewportSize({ width: config.width, height: config.height });
 }
 
